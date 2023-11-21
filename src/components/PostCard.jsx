@@ -8,7 +8,6 @@ export const PostCard = ({title, id, body, posts}) => {
     let favoritesArray = JSON.parse(localStorage.getItem('favorites')); 
     favoritesArray.push(removedPost[0]);
     localStorage.setItem('favorites', JSON.stringify(favoritesArray));
-    console.log(favoritesArray);
 
   }
 

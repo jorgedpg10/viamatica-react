@@ -1,15 +1,16 @@
 import React from 'react'
 
-export const PostCardFav = ({title, id, body}) => {
+export const PostCardFav = ({title, id, body, setPosts}) => {
   
-
-  const handleFavorite = () => {
-    
-
+  const handleUnfavorite = () => {
+    let favoritesArray = JSON.parse(localStorage.getItem('favorites')); 
+    let slicedArray = sliceArrayById(favoritesArray, id);
+    localStorage.setItem('favorites', JSON.stringify(slicedArray));
+    setPosts(slicedArray);
   }
 
-  function removeItemById(arr, idToRemove) {
-    return arr.filter(item => item.id == idToRemove);
+  function sliceArrayById(arr, idToRemove) {
+    return arr.filter(item => item.id != idToRemove);
 }
 
   return (
@@ -18,7 +19,7 @@ export const PostCardFav = ({title, id, body}) => {
         <div className="card-body">
           <p className="card-text">{body}</p>
         </div>
-        <button onClick={handleFavorite} className="btn btn-primary mb-2">Agregar a Destacados</button>
+        <button onClick={handleUnfavorite} className="btn btn-danger mb-2">Quitar de Destacados</button>
         <div className="card-footer text-muted text-center">Id: {id}</div>
       </div>
   );

@@ -18,7 +18,7 @@ export const FavoritePostsPage = () => {
       <div className="container">
         <div className="row rows-cols-1 row-cols-md-4">
           {posts.map((post) => (
-            <PostCardFav key={post.id} title={post.title} id={post.id} body={post.body} />
+            <PostCardFav key={post.id} title={post.title} id={post.id} body={post.body} setPosts={setPosts} />
           ))}
         </div>
       </div>

@@ -17,7 +17,6 @@ export const PostsListPage = () => {
 
     const getAllPosts = async () => { 
         let response = await axios.get(`${endpoint}/posts`);
-        //console.log(response.data);
         setPosts(response.data)
         localStorage.setItem('posts', posts);
     }
