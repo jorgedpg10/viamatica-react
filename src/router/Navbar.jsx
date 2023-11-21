@@ -1,8 +1,14 @@
-import React from 'react'
-import { Link, NavLink } from 'react-router-dom'
-
+import React from "react";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 
 export const Navbar = () => {
+  let navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    navigate("/login")
+  };
+
   return (
     <>
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
@@ -23,22 +29,32 @@ export const Navbar = () => {
           </button>
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
-            <NavLink 
-                to="/posts" 
-                className={({isActive}) => `nav-link ${isActive ? 'active' : ''}` }>
+              <NavLink
+                to="/posts"
+                className={({ isActive }) =>
+                  `nav-link ${isActive ? "active" : ""}`
+                }
+              >
                 Posts
               </NavLink>
-              
-              <NavLink 
-                to="/destacados" 
-                className={({isActive}) => `nav-link ${isActive ? 'active' : ''}` }>
+
+              <NavLink
+                to="/destacados"
+                className={({ isActive }) =>
+                  `nav-link ${isActive ? "active" : ""}`
+                }
+              >
                 Destacados
               </NavLink>
 
               <li className="nav-item">
-                <a className="nav-link " aria-disabled="true">
-                  logout
-                </a>
+                <button
+                  onClick={handleLogout}
+                  className="nav-link "
+                  aria-disabled="true"
+                >
+                  Logout
+                </button>
               </li>
             </ul>
           </div>
@@ -46,4 +62,4 @@ export const Navbar = () => {
       </nav>
     </>
   );
-}
+};
