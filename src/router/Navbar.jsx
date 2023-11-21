@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 
 
 export const Navbar = () => {
@@ -7,9 +7,9 @@ export const Navbar = () => {
     <>
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
         <div className="container-fluid">
-          <a className="navbar-brand" href="#">
+          <Link className="navbar-brand" to="/">
             Viamatica
-          </a>
+          </Link>
           <button
             className="navbar-toggler"
             type="button"
@@ -23,18 +23,20 @@ export const Navbar = () => {
           </button>
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
+            <NavLink 
+                to="/posts" 
+                className={({isActive}) => `nav-link ${isActive ? 'active' : ''}` }>
+                Posts
+              </NavLink>
+              
+              <NavLink 
+                to="/destacados" 
+                className={({isActive}) => `nav-link ${isActive ? 'active' : ''}` }>
+                Destacados
+              </NavLink>
+
               <li className="nav-item">
-                <Link className="nav-link active" aria-current="page" to="/posts">
-                  Posts
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/destacados">
-                  Destacados
-                </Link>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link disabled" aria-disabled="true">
+                <a className="nav-link " aria-disabled="true">
                   logout
                 </a>
               </li>

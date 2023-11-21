@@ -1,10 +1,11 @@
-import { AuthContext } from "./AuthContext"
+/* import { AuthContext } from "./AuthContext"
 
-
-export const AuthProvider = ({children}) => {
+export const AuthProvider = ({ children }) => {
+    const contextToken = 'empty'
   return (
-    <AuthContext.Provider value={{}}>
-        { children }
+    <AuthContext.Provider value={{contextToken}}>
+        {children}
     </AuthContext.Provider>
   )
 }
+ */
