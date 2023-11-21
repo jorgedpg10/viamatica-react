@@ -4,7 +4,7 @@ import { PostCard } from '../components/PostCard';
 import { Navbar } from '../router/Navbar';
 
 
-const endpoint = 'https://jsonplaceholder.typicode.com' // se que esto debería ir en una variable de entorno (env), pero por cuestiones de tiempo lo dejo aquí
+const endpoint = 'https://jsonplaceholder.typicode.com';
 export const PostsListPage = () => {
     const [posts, setPosts] = useState([]);
     const emptyArray = [];
