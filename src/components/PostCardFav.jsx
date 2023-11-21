@@ -1,14 +1,10 @@
 import React from 'react'
 
-export const PostCard = ({title, id, body, posts}) => {
+export const PostCardFav = ({title, id, body}) => {
   
 
   const handleFavorite = () => {
-    const removedPost = removeItemById(posts, id);
-    let favoritesArray = JSON.parse(localStorage.getItem('favorites')); 
-    favoritesArray.push(removedPost[0]);
-    localStorage.setItem('favorites', JSON.stringify(favoritesArray));
-    console.log(favoritesArray);
+    
 
   }
 

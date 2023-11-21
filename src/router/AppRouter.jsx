@@ -11,13 +11,10 @@ export const AppRouter = () => {
     <>
       <Routes>
         <Route path="/login" element={<LoginPage />} />
-        {/* <Route path="/posts" element={<PostsListPage />} /> */}
-        <Route path="/destacados" element={<FavoritePostsPage />} />
-
         <Route element={<PrivateRoutes/>}>
           <Route path="/posts" element={<PostsListPage />} exact />
+          <Route path="/destacados" element={<FavoritePostsPage />} exact />
         </Route>
-
         <Route path="/*" element={<Navigate to="/login" />} />
       </Routes>
     </>

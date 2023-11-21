@@ -7,16 +7,19 @@ import { Navbar } from '../router/Navbar';
 const endpoint = 'https://jsonplaceholder.typicode.com' // se que esto debería ir en una variable de entorno (env), pero por cuestiones de tiempo lo dejo aquí
 export const PostsListPage = () => {
     const [posts, setPosts] = useState([]);
+    const emptyArray = [];
 
     useEffect(() => {
         getAllPosts()   
+        localStorage.setItem('favorites', JSON.stringify(emptyArray));
     
     }, []);
 
     const getAllPosts = async () => { 
-        const response = await axios.get(`${endpoint}/posts`);
-        console.log(response.data);
+        let response = await axios.get(`${endpoint}/posts`);
+        //console.log(response.data);
         setPosts(response.data)
+        localStorage.setItem('posts', posts);
     }
 
   return (
@@ -25,7 +28,7 @@ export const PostsListPage = () => {
       <div className="container">
         <div className="row rows-cols-1 row-cols-md-4">
           {posts.map((post) => (
-            <PostCard key={post.id} {...post} />
+            <PostCard key={post.id} title={post.title} id={post.id} body={post.body} posts={posts} />
           ))}
         </div>
       </div>
