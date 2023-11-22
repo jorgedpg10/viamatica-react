@@ -7,19 +7,22 @@ export const LoginPage = () => {
     let navigate = useNavigate();
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [authenticated, setAuthenticated] = useState(true);
 
     const handleLogin = (event) => {
         event.preventDefault()
         if ( username == 'admin' && password == 'admin'){
           localStorage.setItem('token', 'Bearer');
           navigate("/posts")
+        }else{
+          setAuthenticated(false);
         }
     }
 
     return (
       <>
-        <div className="d-flex justify-content-center">
-          <div>
+        <div className="d-flex justify-content-center mt-3">
+          <div className="w-25">
             <h2 className="text-center mb-2">Login</h2>
             <form onSubmit={handleLogin}>
               <div className="mb-3">
@@ -50,6 +53,13 @@ export const LoginPage = () => {
 
               <button className="btn btn-primary">Entrar</button>
             </form>
+            {!authenticated ? (
+              <div class="alert alert-danger mt-3">
+                <strong>Oops</strong> Por favor revise sus credenciales!
+              </div>
+            ) : (
+              ""
+            )}
           </div>
         </div>
       </>
