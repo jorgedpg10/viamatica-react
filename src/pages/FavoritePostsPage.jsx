@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { Navbar } from '../router/Navbar'
-
 import { PostCardFav } from '../components/PostCardFav';
 
 export const FavoritePostsPage = () => {
